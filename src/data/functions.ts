@@ -16,9 +16,10 @@ export const getIdAndUrlImage = (url: string): [number, string] => {
 export const starWarsApiToData = (
   starWarsApi: StarWarsApi,
 ): StarWarsFilteredData => {
+  const { next, previous } = starWarsApi;
   const data = {
-    nextUrl: starWarsApi.next,
-    previousUrl: starWarsApi.previous,
+    nextUrl: next ? next : "",
+    previousUrl: previous ? previous : "",
     characters: starWarsApi.results.map((result): Character => {
       const [id, picture] = getIdAndUrlImage(result.url);
 

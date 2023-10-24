@@ -8,8 +8,8 @@ export interface Character {
 }
 
 export interface StarWarsApi {
-  next: string;
-  previous: string;
+  next: string | null;
+  previous: string | null;
   results: Array<{
     name: string;
     height: string;
