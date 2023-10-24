@@ -4,7 +4,7 @@ import ListCharacter from "../ListCharacter/ListCharacter";
 import { useState, useEffect } from "react";
 
 const App = (): React.ReactElement => {
-  const [url] = useState(urlApi);
+  const [url, setUrl] = useState(urlApi);
 
   const [starWarsData, setStarWarsData] = useState<StarWarsFilteredData>({
     characters: [],
@@ -12,6 +12,17 @@ const App = (): React.ReactElement => {
     previousUrl: "",
   });
 
+  const goNext = () => {
+    const { nextUrl } = starWarsData;
+    setUrl(() => (nextUrl ? nextUrl : url));
+  };
+
+  const goPrevious = () => {
+    const { previousUrl } = starWarsData;
+    setUrl(() => (previousUrl ? previousUrl : url));
+  };
+  goNext();
+  goPrevious();
   useEffect(() => {
     const action = async () => {
       const data = await getStarWarsFilteredData(url);
