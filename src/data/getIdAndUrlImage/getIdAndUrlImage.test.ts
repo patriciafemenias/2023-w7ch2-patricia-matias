@@ -1,4 +1,4 @@
-import { getIdAndUrlImage } from "../functions";
+import { getIdAndUrlImage } from "../dataFunctions";
 
 describe("Given a getIdAndUrlImage function", () => {
   const url = "https://swapi.dev/api/people/2/";

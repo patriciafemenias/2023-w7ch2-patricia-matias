@@ -1,6 +1,6 @@
 import { Character, StarWarsApi, StarWarsFilteredData } from "../types";
 
-export const fetchData = async (url: string): Promise<StarWarsApi> => {
+export const fetchDataApi = async (url: string): Promise<StarWarsApi> => {
   const response = await fetch(url);
   return response.json();
 };
@@ -13,7 +13,7 @@ export const getIdAndUrlImage = (url: string): [number, string] => {
   ];
 };
 
-export const starWarsApiToData = (
+export const starWarsApiToFilteredData = (
   starWarsApi: StarWarsApi,
 ): StarWarsFilteredData => {
   const { next, previous } = starWarsApi;
@@ -36,9 +36,9 @@ export const starWarsApiToData = (
   return data;
 };
 
-export const getStarWarsData = async (
+export const getStarWarsFilteredData = async (
   url: string,
 ): Promise<StarWarsFilteredData> => {
-  const starWarsApi = (await fetchData(url)) as StarWarsApi;
-  return starWarsApiToData(starWarsApi);
+  const starWarsApi = (await fetchDataApi(url)) as StarWarsApi;
+  return starWarsApiToFilteredData(starWarsApi);
 };

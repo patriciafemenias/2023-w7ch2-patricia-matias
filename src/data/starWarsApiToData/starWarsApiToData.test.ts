@@ -1,5 +1,5 @@
 import { StarWarsApi, StarWarsFilteredData } from "../../types";
-import { starWarsApiToData } from "../functions";
+import { starWarsApiToFilteredData } from "../dataFunctions";
 
 const starWarsApi: StarWarsApi = {
   next: "https://swapi.dev/api/people/?page=2",
@@ -35,7 +35,7 @@ describe("Given a starWarsApiToData function", () => {
       const expectedInformation = starWarsFilteredData;
       const inputInformation = starWarsApi;
 
-      const actualInformation = starWarsApiToData(inputInformation);
+      const actualInformation = starWarsApiToFilteredData(inputInformation);
 
       expect(actualInformation).toStrictEqual(expectedInformation);
     });
