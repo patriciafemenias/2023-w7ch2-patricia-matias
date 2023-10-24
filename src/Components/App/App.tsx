@@ -1,6 +1,6 @@
 import { getStarWarsFilteredData, urlApi } from "../../data/dataFunctions";
 import { StarWarsFilteredData } from "../../types";
-import ListCharacter from "../ListCharacter/ListCharacter";
+import CharactersList from "../CharactersList/CharactersList";
 import { useState, useEffect } from "react";
 
 const App = (): React.ReactElement => {
@@ -21,7 +21,7 @@ const App = (): React.ReactElement => {
   }, [url]);
   return (
     <div className="App">
-      <ListCharacter characters={starWarsData.characters} />
+      <CharactersList characters={starWarsData.characters} />
     </div>
   );
 };
