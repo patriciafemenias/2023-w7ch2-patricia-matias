@@ -3,5 +3,5 @@ export interface Character {
   picture: string;
   height: number;
   mass: number;
-  birthYear: number;
+  birthYear: string;
 }
