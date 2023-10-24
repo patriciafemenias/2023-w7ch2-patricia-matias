@@ -42,3 +42,5 @@ export const getStarWarsFilteredData = async (
   const starWarsApi = (await fetchDataApi(url)) as StarWarsApi;
   return starWarsApiToFilteredData(starWarsApi);
 };
+
+export const urlApi = "https://swapi.dev/api/people/";
