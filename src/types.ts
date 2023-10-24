@@ -1,3 +1,12 @@
+export interface Character {
+  id: number;
+  name: string;
+  picture: string;
+  height: number;
+  mass: number;
+  birthYear: string;
+}
+
 export interface StarWarsApi {
   next: string;
   previous: string;
@@ -9,11 +18,8 @@ export interface StarWarsApi {
     url: string;
   }>;
 }
-
-export interface Character {
-  name: string;
-  picture: string;
-  height: number;
-  mass: number;
-  birthYear: string;
+export interface StarWarsFilteredData {
+  nextUrl: string;
+  previousUrl: string;
+  characters: Array<Character>;
 }
