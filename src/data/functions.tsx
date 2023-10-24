@@ -19,7 +19,7 @@ export const starWarsApiToData = (starWarsApi: StarWarsApi) => {
         name: result.name,
         height: Number(result.height),
         mass: Number(result.mass),
-        birthYear: parseInt(result.birth_year, 10),
+        birthYear: result.birth_year,
         picture: getUrlImage(result.url),
       }),
     ),
