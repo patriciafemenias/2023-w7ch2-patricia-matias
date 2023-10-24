@@ -1,4 +1,4 @@
-import { StarWarsApi } from "../types";
+import { Character, StarWarsApi } from "../types";
 
 export const fetchData = async (url: string): Promise<StarWarsApi> => {
   const response = await fetch(url);
@@ -8,4 +8,21 @@ export const fetchData = async (url: string): Promise<StarWarsApi> => {
 export const getUrlImage = (url: string): string => {
   const imageId = Number(url.split("/").at(-2)!);
   return `https://starwars-visualguide.com/assets/img/characters/${imageId}.jpg`;
+};
+
+export const starWarsApiToData = (starWarsApi: StarWarsApi) => {
+  const data = {
+    nexturl: starWarsApi.next,
+    previousurl: starWarsApi.previous,
+    characters: starWarsApi.results.map(
+      (result): Character => ({
+        name: result.name,
+        height: Number(result.height),
+        mass: Number(result.mass),
+        birthYear: parseInt(result.birth_year, 10),
+        picture: getUrlImage(result.url),
+      }),
+    ),
+  };
+  return data;
 };
