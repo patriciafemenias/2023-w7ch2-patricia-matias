@@ -1,5 +1,5 @@
 import { getStarWarsFilteredData, urlApi } from "../../data/dataFunctions";
-import { StarWarsFilteredData } from "../../types";
+import { Character, StarWarsFilteredData } from "../../types";
 import CharactersList from "../CharactersList/CharactersList";
 import { useState, useEffect } from "react";
 import Button from "../Button/Button";
@@ -14,6 +14,26 @@ const App = (): React.ReactElement => {
     previousUrl: "",
   });
 
+  const setCharacterMass = (newCharacter: Character) =>
+    setStarWarsData(() => ({
+      nextUrl: starWarsData.nextUrl,
+      previousUrl: starWarsData.previousUrl,
+      characters: starWarsData.characters.map((character) => {
+        const { mass: oldMass, id } = character;
+        return {
+          ...character,
+          mass: id !== newCharacter.id ? newCharacter.mass : oldMass,
+        };
+      }),
+    }));
+  setCharacterMass({
+    birthYear: "",
+    height: 0,
+    id: 100,
+    mass: 0,
+    name: "",
+    picture: "",
+  });
   const goNext = () => {
     const { nextUrl } = starWarsData;
     setUrl(() => (nextUrl ? nextUrl : url));
