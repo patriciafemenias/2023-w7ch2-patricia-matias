@@ -33,7 +33,6 @@ const App = (): React.ReactElement => {
   }, [url]);
   return (
     <div className="App">
-      <Button className="button" innerText="<<<" method={goPrevious} />
       <img
         className="App__logo"
         src="/images/logo.png"
@@ -41,7 +40,14 @@ const App = (): React.ReactElement => {
         width="400"
         height="400"
       ></img>
-      <Button className="button" innerText=">>>" method={goNext} />
+      <div className="button-container">
+        <Button
+          className="button"
+          innerText="<<< Previous"
+          method={goPrevious}
+        />
+        <Button className="button" innerText="Next >>>" method={goNext} />
+      </div>
       <CharactersList characters={starWarsData.characters} />
     </div>
   );

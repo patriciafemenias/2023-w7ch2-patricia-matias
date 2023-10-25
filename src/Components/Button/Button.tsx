@@ -1,3 +1,4 @@
+import "./Button.css";
 interface ButtonProps {
   method: () => void;
   innerText: string;

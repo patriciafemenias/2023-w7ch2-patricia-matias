@@ -8,3 +8,9 @@
   width: 400px;
   height: 400px;
 }
+
+.button-container {
+  display: flex;
+  gap: 100px;
+  padding: 10px;
+}
