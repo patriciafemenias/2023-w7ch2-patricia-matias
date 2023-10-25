@@ -41,7 +41,6 @@ const App = (): React.ReactElement => {
         width="400"
         height="400"
       ></img>
-      <CharactersList characters={starWarsData.characters} />
       <Button className="button" innerText=">>>" method={goNext} />
       <CharactersList characters={starWarsData.characters} />
     </div>
