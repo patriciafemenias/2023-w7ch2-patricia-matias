@@ -1,12 +1,17 @@
 import { Character } from "../../types";
 import "./CharacterCard.css";
+import Button from "../Button/Button";
 
 interface CharacterCardProps {
   character: Character;
+  increaseMass: (character: Character) => void;
+  decreaseMass: (character: Character) => void;
 }
 
 const CharacterCard = ({
   character,
+  increaseMass,
+  decreaseMass,
 }: CharacterCardProps): React.ReactElement => {
   return (
     <div className="character-card">
@@ -22,8 +27,22 @@ const CharacterCard = ({
           <span className="character-card__data">{character.height}</span>
         </li>
         <li className="character-card__title-data">
+          <Button
+            className="button__mass"
+            innerText="-"
+            method={() => {
+              decreaseMass(character);
+            }}
+          />
           Mass:
           <span className="character-card__data">{character.mass}</span>
+          <Button
+            className="button__mass"
+            innerText="+"
+            method={() => {
+              increaseMass(character);
+            }}
+          />
         </li>
         <li className="character-card__title-data">
           BirthYear:
