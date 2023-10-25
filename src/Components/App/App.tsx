@@ -56,24 +56,6 @@ const App = (): React.ReactElement => {
     setCharacterMass(newCharacter);
   };
 
-  decreaseMassCharacter({
-    birthYear: "",
-    height: 0,
-    id: 100,
-    mass: 0,
-    name: "",
-    picture: "",
-  });
-
-  increaseMassCharacter({
-    birthYear: "",
-    height: 0,
-    id: 100,
-    mass: 0,
-    name: "",
-    picture: "",
-  });
-
   const goNext = () => {
     const { nextUrl } = starWarsData;
     setUrl(() => (nextUrl ? nextUrl : url));
@@ -109,7 +91,11 @@ const App = (): React.ReactElement => {
         />
         <Button className="button" innerText="Next >>>" method={goNext} />
       </div>
-      <CharactersList characters={starWarsData.characters} />
+      <CharactersList
+        characters={starWarsData.characters}
+        decreaseMass={decreaseMassCharacter}
+        increaseMass={increaseMassCharacter}
+      />
     </div>
   );
 };
