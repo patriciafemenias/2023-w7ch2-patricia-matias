@@ -2,7 +2,7 @@ import {
   Character,
   StarWarsApi,
   StarWarsFilteredData,
-  StarwarsApiLocal,
+  StarWarsApiLocal,
 } from "../types";
 
 export const fetchDataApi = async (url: string): Promise<unknown> => {
@@ -18,7 +18,7 @@ export const getIdAndUrlImage = (url: string): [number, string] => {
   ];
 };
 
-export const starWarsApiToFilteredData = (
+export const ChangeStarWarsApiToFilteredData = (
   starWarsApi: StarWarsApi,
 ): StarWarsFilteredData => {
   const { next, previous } = starWarsApi;
@@ -41,8 +41,8 @@ export const starWarsApiToFilteredData = (
   return data;
 };
 
-export const starwarsApiLocaltoFilteredData = (
-  starWarsApi: StarwarsApiLocal,
+export const ChangeStarWarsApiLocaltoFilteredData = (
+  starWarsApi: StarWarsApiLocal,
 ): Character[] => {
   return starWarsApi.map((characterApi): Character => {
     const { birth_year, height, id, mass, name } = characterApi;
@@ -60,9 +60,9 @@ export const starwarsApiLocaltoFilteredData = (
 export const getStarWarsFilteredData = async (
   url: string,
 ): Promise<StarWarsFilteredData> => {
-  const starWarsApi = (await fetchDataApi(url)) as StarwarsApiLocal;
+  const starWarsApi = (await fetchDataApi(url)) as StarWarsApiLocal;
   return {
-    characters: starwarsApiLocaltoFilteredData(starWarsApi),
+    characters: ChangeStarWarsApiLocaltoFilteredData(starWarsApi),
     nextUrl: "",
     previousUrl: "",
   };

@@ -31,4 +31,4 @@ export interface StarWarsFilteredData {
   characters: Array<Character>;
 }
 
-export type StarwarsApiLocal = Array<CharacterApi>;
+export type StarWarsApiLocal = Array<CharacterApi>;
