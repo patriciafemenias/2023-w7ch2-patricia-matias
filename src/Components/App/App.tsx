@@ -1,4 +1,8 @@
-import { getStarWarsFilteredData, urlApi } from "../../data/dataFunctions";
+import {
+  fetchPatchCharacterMass,
+  getStarWarsFilteredData,
+  urlApi,
+} from "../../data/dataFunctions";
 import { Character, StarWarsFilteredData } from "../../types";
 import CharactersList from "../CharactersList/CharactersList";
 import { useState, useEffect } from "react";
@@ -14,19 +18,36 @@ const App = (): React.ReactElement => {
     previousUrl: "",
   });
 
-  const setCharacterMass = (newCharacter: Character) =>
+  const setCharacterMass = (
+    newCharacter: Character,
+    doAllCharacter: boolean = false,
+  ) =>
     setStarWarsData(() => ({
       nextUrl: starWarsData.nextUrl,
       previousUrl: starWarsData.previousUrl,
       characters: starWarsData.characters.map((character) => {
         const { mass: oldMass, id } = character;
+
         return {
           ...character,
-          mass: id !== newCharacter.id ? newCharacter.mass : oldMass,
+          mass:
+            id !== newCharacter.id || doAllCharacter
+              ? newCharacter.mass
+              : oldMass,
         };
       }),
     }));
-  setCharacterMass({
+
+  const increaseMassCharacter = async (character: Character) => {
+    const newCharacter = { ...character, mass: character.mass + 1 };
+    const response = await fetchPatchCharacterMass(newCharacter);
+    if (response.status !== 200) {
+      return;
+    }
+    setCharacterMass(newCharacter);
+  };
+
+  increaseMassCharacter({
     birthYear: "",
     height: 0,
     id: 100,
@@ -34,6 +55,7 @@ const App = (): React.ReactElement => {
     name: "",
     picture: "",
   });
+
   const goNext = () => {
     const { nextUrl } = starWarsData;
     setUrl(() => (nextUrl ? nextUrl : url));
