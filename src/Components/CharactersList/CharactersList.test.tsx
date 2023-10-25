@@ -1,6 +1,6 @@
 import { Character } from "../../types";
 import CharactersList from "./CharactersList";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 describe("Given a CharactersList component", () => {
   describe("When it receives a list of Star Wars characters", () => {
@@ -17,6 +17,10 @@ describe("Given a CharactersList component", () => {
         },
       ];
       render(<CharactersList characters={characters} />);
+      const characterName = screen.getByRole("heading", {
+        name: characters[0].name,
+      });
+      expect(characterName).toBeInTheDocument();
     });
   });
 });
