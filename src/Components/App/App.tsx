@@ -47,6 +47,24 @@ const App = (): React.ReactElement => {
     setCharacterMass(newCharacter);
   };
 
+  const decreaseMassCharacter = async (character: Character) => {
+    const newCharacter = { ...character, mass: character.mass - 1 };
+    const response = await fetchPatchCharacterMass(newCharacter);
+    if (response.status !== 200) {
+      return;
+    }
+    setCharacterMass(newCharacter);
+  };
+
+  decreaseMassCharacter({
+    birthYear: "",
+    height: 0,
+    id: 100,
+    mass: 0,
+    name: "",
+    picture: "",
+  });
+
   increaseMassCharacter({
     birthYear: "",
     height: 0,
