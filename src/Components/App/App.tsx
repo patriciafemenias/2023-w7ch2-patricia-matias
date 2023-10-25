@@ -25,7 +25,7 @@ const App = (): React.ReactElement => {
       <img
         className="App__logo"
         src="/images/logo.png"
-        alt="Star Wars logo"
+        alt="Star Wars Logo"
         width="400"
         height="400"
       ></img>
