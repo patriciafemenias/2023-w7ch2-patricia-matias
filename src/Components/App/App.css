@@ -1,11 +1,17 @@
-.App {
+.app {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.App__logo {
+.app__logo {
   width: 400px;
   height: 400px;
   object-fit: cover;
+}
+
+.button-container {
+  display: flex;
+  gap: 100px;
+  padding: 10px;
 }
