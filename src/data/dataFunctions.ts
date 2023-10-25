@@ -1,6 +1,11 @@
-import { Character, StarWarsApi, StarWarsFilteredData } from "../types";
+import {
+  Character,
+  StarWarsApi,
+  StarWarsFilteredData,
+  StarWarsApiLocal,
+} from "../types";
 
-export const fetchDataApi = async (url: string): Promise<StarWarsApi> => {
+export const fetchDataApi = async (url: string): Promise<unknown> => {
   const response = await fetch(url);
   return response.json();
 };
@@ -13,7 +18,7 @@ export const getIdAndUrlImage = (url: string): [number, string] => {
   ];
 };
 
-export const starWarsApiToFilteredData = (
+export const ChangeStarWarsApiToFilteredData = (
   starWarsApi: StarWarsApi,
 ): StarWarsFilteredData => {
   const { next, previous } = starWarsApi;
@@ -36,11 +41,43 @@ export const starWarsApiToFilteredData = (
   return data;
 };
 
+export const ChangeStarWarsApiLocaltoFilteredData = (
+  starWarsApi: StarWarsApiLocal,
+): Character[] => {
+  return starWarsApi.map((characterApi): Character => {
+    const { birth_year, height, id, mass, name } = characterApi;
+    return {
+      birthYear: birth_year,
+      height,
+      id,
+      mass,
+      name,
+      picture: `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`,
+    };
+  });
+};
+
 export const getStarWarsFilteredData = async (
   url: string,
 ): Promise<StarWarsFilteredData> => {
-  const starWarsApi = (await fetchDataApi(url)) as StarWarsApi;
-  return starWarsApiToFilteredData(starWarsApi);
+  const starWarsApi = (await fetchDataApi(url)) as StarWarsApiLocal;
+  return {
+    characters: ChangeStarWarsApiLocaltoFilteredData(starWarsApi),
+    nextUrl: "",
+    previousUrl: "",
+  };
 };
 
-export const urlApi = "https://swapi.dev/api/people/";
+export const urlApi =
+  "https://starwars-characters-api-qcun.onrender.com/characters/";
+
+export const fetchPatchCharacterMass = async (Charater: Character) => {
+  const response = await fetch(`${urlApi}${Charater.id}/`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "PATCH",
+    body: JSON.stringify({ mass: Charater.mass }),
+  });
+  return response;
+};

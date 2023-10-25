@@ -1,10 +1,17 @@
-export interface Character {
+export interface CharacterBase {
   id: number;
   name: string;
-  picture: string;
   height: number;
   mass: number;
+}
+
+export interface Character extends CharacterBase {
+  picture: string;
   birthYear: string;
+}
+
+export interface CharacterApi extends CharacterBase {
+  birth_year: string;
 }
 
 export interface StarWarsApi {
@@ -23,3 +30,5 @@ export interface StarWarsFilteredData {
   previousUrl: string;
   characters: Array<Character>;
 }
+
+export type StarWarsApiLocal = Array<CharacterApi>;
