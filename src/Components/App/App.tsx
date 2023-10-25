@@ -36,8 +36,8 @@ const App = (): React.ReactElement => {
       <Button className="button" innerText="<<<" method={goPrevious} />
       <img
         className="App__logo"
-        src="/public/images/logo.png"
-        alt="Star Wars logo"
+        src="/images/logo.png"
+        alt="Star Wars Logo"
         width="400"
         height="400"
       ></img>
