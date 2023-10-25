@@ -2,6 +2,7 @@ import { getStarWarsFilteredData, urlApi } from "../../data/dataFunctions";
 import { StarWarsFilteredData } from "../../types";
 import ListCharacter from "../ListCharacter/ListCharacter";
 import { useState, useEffect } from "react";
+import Button from "../Button/Button";
 
 const App = (): React.ReactElement => {
   const [url, setUrl] = useState(urlApi);
@@ -21,8 +22,7 @@ const App = (): React.ReactElement => {
     const { previousUrl } = starWarsData;
     setUrl(() => (previousUrl ? previousUrl : url));
   };
-  goNext();
-  goPrevious();
+
   useEffect(() => {
     const action = async () => {
       const data = await getStarWarsFilteredData(url);
@@ -32,6 +32,8 @@ const App = (): React.ReactElement => {
   }, [url]);
   return (
     <div className="App">
+      <Button className="button" innerText="<<<" method={goPrevious} />
+      <Button className="button" innerText=">>>" method={goNext} />
       <ListCharacter characters={starWarsData.characters} />
     </div>
   );
