@@ -43,7 +43,7 @@ const App = (): React.ReactElement => {
       ></img>
       <CharactersList characters={starWarsData.characters} />
       <Button className="button" innerText=">>>" method={goNext} />
-      <ListCharacter characters={starWarsData.characters} />
+      <CharactersList characters={starWarsData.characters} />
     </div>
   );
 };
