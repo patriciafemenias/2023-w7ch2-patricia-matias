@@ -31,10 +31,11 @@ const App = (): React.ReactElement => {
     };
     action();
   }, [url]);
+
   return (
-    <div className="App">
+    <div className="app">
       <img
-        className="App__logo"
+        className="app__logo"
         src="/images/logo.png"
         alt="Star Wars Logo"
         width="412.5"
