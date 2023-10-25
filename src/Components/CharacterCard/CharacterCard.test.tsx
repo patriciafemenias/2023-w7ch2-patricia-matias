@@ -1,6 +1,6 @@
 import { Character } from "../../types";
 import CharacterCard from "./CharacterCard";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 describe("Given a CharacterCard component", () => {
   describe("When it receives Chewbacca's data", () => {
@@ -13,7 +13,13 @@ describe("Given a CharacterCard component", () => {
         mass: 300,
         birthYear: "19BBY",
       };
+
       render(<CharacterCard character={chewbacca} />);
+      const characterName = screen.getByRole("heading", {
+        name: chewbacca.name,
+      });
+
+      expect(characterName).toBeInTheDocument();
     });
   });
 });
