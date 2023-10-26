@@ -4,3 +4,17 @@
   color: #1d1e1f;
   border-radius: 15px;
 }
+
+.mass-box {
+  display: flex;
+  align-items: center;
+}
+
+.button--mass {
+  background-color: #36393b;
+  border: #000 solid 1px;
+  font-weight: bold;
+  width: 40px;
+  padding: 0 10px 0 10px;
+  margin: 5px;
+}
