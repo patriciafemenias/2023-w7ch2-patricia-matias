@@ -31,7 +31,7 @@ const App = (): React.ReactElement => {
         return {
           ...character,
           mass:
-            id !== newCharacter.id || doAllCharacter
+            id === newCharacter.id || doAllCharacter
               ? newCharacter.mass
               : oldMass,
         };
