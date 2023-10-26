@@ -80,8 +80,8 @@ const App = (): React.ReactElement => {
         className="app__logo"
         src="/images/logo.png"
         alt="Star Wars Logo"
-        width="412.5"
-        height="300"
+        width="400"
+        height="400"
       ></img>
       <div className="button-container">
         <Button
