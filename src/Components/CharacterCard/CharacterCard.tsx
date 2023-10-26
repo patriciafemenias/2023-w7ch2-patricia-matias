@@ -27,22 +27,24 @@ const CharacterCard = ({
           <span className="character-card__data">{character.height}</span>
         </li>
         <li className="character-card__title-data">
-          <Button
-            className="button__mass"
-            innerText="-"
-            method={() => {
-              decreaseMass(character);
-            }}
-          />
           Mass:
-          <span className="character-card__data">{character.mass}</span>
-          <Button
-            className="button__mass"
-            innerText="+"
-            method={() => {
-              increaseMass(character);
-            }}
-          />
+          <div className="mass-box">
+            <Button
+              className=" button button--mass"
+              innerText="-"
+              method={() => {
+                decreaseMass(character);
+              }}
+            />
+            <span className="character-card__data">{character.mass}</span>
+            <Button
+              className=" button button--mass"
+              innerText="+"
+              method={() => {
+                increaseMass(character);
+              }}
+            />
+          </div>
         </li>
         <li className="character-card__title-data">
           BirthYear:
