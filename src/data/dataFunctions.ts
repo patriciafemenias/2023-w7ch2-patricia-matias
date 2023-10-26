@@ -48,9 +48,9 @@ export const ChangeStarWarsApiLocaltoFilteredData = (
     const { birth_year, height, id, mass, name } = characterApi;
     return {
       birthYear: birth_year,
-      height,
-      id,
-      mass,
+      height: Number(height),
+      id: Number(id),
+      mass: Number(mass),
       name,
       picture: `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`,
     };

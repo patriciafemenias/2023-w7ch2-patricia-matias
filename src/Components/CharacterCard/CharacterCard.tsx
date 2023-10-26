@@ -4,8 +4,8 @@ import Button from "../Button/Button";
 
 interface CharacterCardProps {
   character: Character;
-  increaseMass: (character: Character) => void;
-  decreaseMass: (character: Character) => void;
+  increaseMass?: (character: Character) => void;
+  decreaseMass?: (character: Character) => void;
 }
 
 const CharacterCard = ({
@@ -33,7 +33,7 @@ const CharacterCard = ({
               className=" button button--mass"
               innerText="-"
               method={() => {
-                decreaseMass(character);
+                decreaseMass!(character);
               }}
             />
             <span className="character-card__data">{character.mass}</span>
@@ -41,7 +41,7 @@ const CharacterCard = ({
               className=" button button--mass"
               innerText="+"
               method={() => {
-                increaseMass(character);
+                increaseMass!(character);
               }}
             />
           </div>
