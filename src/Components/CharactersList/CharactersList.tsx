@@ -4,8 +4,8 @@ import "./CharactersList.css";
 
 interface ListCharacterprops {
   characters: Character[];
-  increaseMass: (character: Character) => void;
-  decreaseMass: (character: Character) => void;
+  increaseMass?: (character: Character) => void;
+  decreaseMass?: (character: Character) => void;
 }
 
 const CharactersList = ({
